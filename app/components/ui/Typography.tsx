@@ -5,7 +5,7 @@ import { cn } from "../../lib/utils";
 
 interface TypographyProps extends HTMLAttributes<HTMLElement> {
   variant?: "h1" | "h2" | "h3" | "h4" | "body" | "body-large" | "body-medium" | "caption" | "hero";
-  as?: "h1" | "h2" | "h3" | "h4" | "p" | "span" | "div";
+  as?: keyof JSX.IntrinsicElements;
   children: React.ReactNode;
 }
 

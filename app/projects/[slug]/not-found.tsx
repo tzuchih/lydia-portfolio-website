@@ -21,7 +21,7 @@ export default function ProjectNotFound() {
             as="p"
             className="text-gray-600 mb-8"
           >
-            Sorry, the project you're looking for doesn't exist or may have been moved.
+            Sorry, the project you&apos;re looking for doesn&apos;t exist or may have been moved.
           </Typography>
         </div>
 

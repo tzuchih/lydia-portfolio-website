@@ -134,7 +134,7 @@ export default function Home() {
             <span className="text-green-600">next step.</span>
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-            I'd love to share more about my journey and how I can help you. Let's connect!
+            I&apos;d love to share more about my journey and how I can help you. Let&apos;s connect!
           </p>
           
           {/* Contact Action Buttons */}
