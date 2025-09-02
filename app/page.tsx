@@ -1,103 +1,173 @@
+"use client";
+
+// app/page.tsx
 import Image from "next/image";
+import IntegratedHero from "./components/sections/IntegratedHero";
+import Navigation from "./components/layout/Navigation";
+import ScrollProgress from "./components/layout/ScrollProgress";
+import SkillsSection from "./components/sections/SkillsSection";
+import ExperienceSection from "./components/sections/ExperienceSection";
+import ProjectsSection from "./components/sections/ProjectsSection";
+import Typography from "./components/ui/Typography";
+import { Linkedin, Mail, Download, ArrowRight } from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const navigationItems = [
+    { id: "home", label: "Home", href: "#home" },
+    { id: "about", label: "About", href: "#about" },
+    { id: "skills", label: "Skills", href: "#skills" },
+    { id: "experience", label: "Experience", href: "#experience" },
+    { id: "projects", label: "Projects", href: "#projects" },
+    { id: "contact", label: "Contact", href: "#contact" },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const handleExploreWork = () => {
+    const nextSection = document.getElementById('about');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleLinkedIn = () => {
+    window.open('https://www.linkedin.com/in/lydiatzuchihsu', '_blank');
+  };
+
+  const handleEmail = () => {
+    window.open('mailto:lydia.tzuching@gmail.com', '_blank');
+  };
+
+  const handleDownloadResume = () => {
+    // Downloads resume from public folder
+    window.open('/resume.pdf', '_blank');
+  };
+
+  return (
+    <main className="bg-white">
+      {/* Navigation and Progress Bar */}
+      <ScrollProgress />
+      <Navigation items={navigationItems} />
+      
+      {/* Hero Section */}
+      <div id="home">
+        <IntegratedHero
+          layout="combined"
+          className="font-sf-pro"
+        />
+      </div>
+      
+      {/* About Section */}
+      <section id="about" className="bg-gray-50 flex items-center justify-center py-12 scroll-mt-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Typography
+            variant="h2"
+            as="h2"
+            className="text-yellow-500 mb-4"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            About Me 👩🏻‍💻
+          </Typography>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Marketing 🆇 Product 🆇 Data </h2>
+          <p className="text-xl text-gray-600 leading-relaxed max-w-5xl mx-auto mb-12">
+          I’ve always believed the most rewarding moments come when customers see how a solution makes their work easier. That belief has guided my career path: 
+          <strong className="font-bold"> with over 5 years in B2B product marketing at 3M and a Master’s in Business Analytics from UC Irvine</strong>, I began in analytics, grew into product marketing, and even stepped up to lead new product programs outside my original scope.
+          <br /><br />
+          What defines me is curiosity, creativity, and high ownership. I thrive on turning complex products into simple, compelling stories, whether that means interviewing customers, building product content, or guiding cross-functional launches.
+          <br /><br />
+          My background in innovation manufacturing gave me the chance to serve both global key accounts and SMB customers, while my data fluency ensures every decision is backed by evidence. This combination helps me bridge the gap between engineering and marketing in ways that drive measurable growth and customer success.
+          <br /><br />
+          Now, I’m looking for my next chapter where I can bring together marketing, program leadership, and data-driven storytelling to help businesses thrive and people do their best work.
+          <br />
+          *See more of my work experience in the{" "}
+          <button
+            onClick={() => {
+              const experienceSection = document.getElementById('experience');
+              if (experienceSection) {
+                experienceSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="text-blue-600 hover:text-blue-800 underline font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
           >
-            Read our docs
-          </a>
+            Experience section
+          </button>.
+          </p>
+          
+          {/* About Me Images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="aspect-[16/10] rounded-lg overflow-hidden shadow-lg">
+              <Image 
+                src="/about-me-1.jpg"
+                alt="About me - Lydia working"
+                width={640}
+                height={400}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+            <div className="aspect-[16/10] rounded-lg overflow-hidden shadow-lg">
+              <Image 
+                src="/about-me-2.jpg"
+                alt="About me - Lydia professional"
+                width={640}
+                height={400}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Skills Section */}
+      <SkillsSection />
+
+      {/* Experience Section */}
+      <ExperienceSection />
+
+      {/* Projects Section */}
+      <ProjectsSection />
+
+      {/* Contact Section */}
+      <section id="contact" className="min-h-screen bg-gray-50 flex items-center justify-center py-20 scroll-mt-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-8xl font-bold mb-8 flex items-center justify-center gap-4 whitespace-nowrap">
+            <span className="text-gray-900">Take the</span>
+            <span className="text-8xl">➡️</span>
+            <span className="text-green-600">next step.</span>
+          </h2>
+          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
+            I'd love to share more about my journey and how I can help you. Let's connect!
+          </p>
+          
+          {/* Contact Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+            {/* LinkedIn Button */}
+            <button
+              onClick={handleLinkedIn}
+              className="flex items-center gap-4 px-8 py-4 bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 rounded-xl transition-all duration-300 ease-out shadow-sm hover:shadow-md transform hover:scale-105 text-lg"
+            >
+              <Linkedin className="w-6 h-6" />
+              <span className="font-medium">LinkedIn</span>
+            </button>
+
+            {/* Email Button */}
+            <button
+              onClick={handleEmail}
+              className="flex items-center gap-4 px-8 py-4 bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-gray-800 rounded-xl transition-all duration-300 ease-out shadow-sm hover:shadow-md transform hover:scale-105 text-lg"
+            >
+              <Mail className="w-6 h-6" />
+              <span className="font-medium">Email</span>
+            </button>
+
+            {/* Download Resume Button */}
+            <button
+              onClick={handleDownloadResume}
+              className="flex items-center gap-4 px-8 py-4 bg-green-50 hover:bg-green-100 text-green-700 hover:text-green-800 rounded-xl transition-all duration-300 ease-out shadow-sm hover:shadow-md transform hover:scale-105 text-lg"
+            >
+              <Download className="w-6 h-6" />
+              <span className="font-medium">Resume</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,17 +1,13 @@
-@import "tailwindcss";
+/* Tailwind core layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Light/Dark variables (plain CSS) */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -22,5 +18,105 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Apple system font stack */
+  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Enhanced text rendering for better readability */
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+}
+
+/* helpers */
+.nowrap { white-space: nowrap; }
+@media (max-width: 420px) { .wrap-xs { white-space: normal; } }
+br.large { display: none; }
+@media (min-width: 1024px) { br.large { display: inline; } }
+
+/* hide list markers globally (so the 1..7 never appear) */
+ol, ul { list-style: none; margin: 0; padding: 0; }
+
+/* Custom animations */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Emoji tilt animation */
+@keyframes emojiTilt {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(12deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.emoji-tilt {
+  display: inline-block;
+  animation: emojiTilt 0.4s ease-in-out;
+}
+
+.emoji-container {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Text readability improvements */
+p, span, li, div {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth horizontal scrolling */
+.scrollbar-hide {
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+}
+
+/* Improved contrast for better readability */
+.text-gray-700 {
+  color: rgb(55 65 81) !important;
+}
+
+.text-gray-600 {
+  color: rgb(75 85 99) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
