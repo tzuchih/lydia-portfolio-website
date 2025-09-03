@@ -38,7 +38,7 @@ export default function ScrollHighlightHero() {
   const lines = useMemo(
     () => [
       { id: 0, text: "From 🔢 data insights 📈 to positioning 📝 and product sense," },
-      { id: 1, text: "Lydia has what you need 🤝🏼 to help 🍎 Apple's small business customers thrive." },
+      { id: 1, text: "Lydia has what you need 🤝🏼 to help customers 🍎 thrive." },
       { id: 2, text: "All in 📌 one marketer." },
       { id: 3, text: "This is strategic PMM ✅ at work." },
     ],
